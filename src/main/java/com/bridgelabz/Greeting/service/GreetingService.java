@@ -25,6 +25,11 @@ public class GreetingService {
             return "Hello World";
         }
     }
+    public String getGreetingById(Long id) {
+        return greetingRepository.findById(id)
+                .map(Greeting::getMessage)
+                .orElse("Greeting not found");
+    }
     public void saveGreetingMessage(String message) {
         greetingRepository.save(new Greeting(message));
     }
